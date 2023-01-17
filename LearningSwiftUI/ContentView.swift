@@ -21,14 +21,14 @@ struct ContentView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.all)
             Text("Email address *").font(.subheadline).foregroundColor(.gray).frame(maxWidth: .infinity, alignment: .leading).padding(EdgeInsets(top: 0, leading: 20, bottom:2, trailing: 20))
-            TextField("", text: $username ).padding(EdgeInsets(top: 0, leading: 20, bottom: 10, trailing: 20)).textContentType(.emailAddress)
-                .frame(height: 44)
+            TextField("", text: $username ).padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)).textContentType(.emailAddress)
+                .frame(height: 50)
                     .cornerRadius(8)
                     .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray))
-                    .padding([.horizontal],20)
+                    .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
             Text("Password *").font(.subheadline).foregroundColor(.gray).frame(maxWidth: .infinity, alignment: .leading).padding(EdgeInsets(top:20, leading: 20, bottom:2, trailing: 20))
-            SecureField("", text: $password ).padding(EdgeInsets(top: 0, leading: 20, bottom: 10, trailing: 20)).textContentType(.emailAddress)
-                .frame(height: 44)
+            SecureField("", text: $password ).padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)).textContentType(.emailAddress)
+                .frame(height: 50)
                     .cornerRadius(8)
                     .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray))
                     .padding([.horizontal],20)
@@ -45,7 +45,9 @@ struct ContentView: View {
                     .resizable()
                     .scaledToFit().frame(width: 24, height: 24).padding(.all)
                 Text("Face id").font(.subheadline)
-                Toggle("off", isOn: $isFaceIdOn).frame(maxWidth: .infinity, alignment: .trailing).padding(EdgeInsets(top: 5, leading: 20, bottom: 5, trailing:10))
+                Spacer()
+                ToggleView(isOn: $isFaceIdOn).padding(.all)
+               // Toggle("off", isOn: $isFaceIdOn).frame(maxWidth: .infinity, alignment: .trailing).padding(EdgeInsets(top: 5, leading: 20, bottom: 5, trailing:10))
             }.background(RoundedRectangle(cornerRadius: 8).stroke(Color.gray)).padding(.all)
             Button {
                 debugPrint("FaceID terms")
@@ -58,9 +60,9 @@ struct ContentView: View {
                 debugPrint("Username \(self.username) and Password: \(self.password)")
             } label: {
                 Text("Sign In").bold()
-                .frame(maxWidth: .infinity)
+                    .frame(maxWidth: .infinity, alignment: .center)
             }
-            .disabled((username.count < 4 || password.count < 4)).padding(20).buttonStyle(.borderedProminent).tint(.blue).foregroundColor(.white).cornerRadius(8).frame(width:.infinity, height: 44)
+            .disabled((username.count < 4 || password.count < 4)).padding(20).buttonStyle(.borderedProminent).tint(.blue).foregroundColor(.white).cornerRadius(8)
             }
    }
 }
